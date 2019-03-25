@@ -238,3 +238,53 @@ body.active_admin.logged_in {
     margin: 0;
   }
 }
+
+#tabs li a{
+  &.active,
+  &:hover{
+    background-color:rgba(200,200,200,.2);
+  }
+}
+
+.header #tabs#tabs li.has_nested:not(.open){
+  ul{
+    display:none!important;
+  }
+  > a:after{
+    content:""!important
+  }
+} 
+
+.header #tabs#tabs li.has_nested.open{
+  ul{
+    display:block!important;
+  }
+  > a:after{
+    content:""!important;
+  }
+} 
+
+.has_nested { 
+  position:relative;
+  .open-trigger:hover,
+  &.open .open-trigger  
+  {
+    background-color:rgba(200,200,200,.2);
+  }
+  
+  >.open-trigger {
+    position: absolute;
+    right: 0px;
+    width: 44.5px;
+    height:37.5px;
+    text-align: center;
+    top: 0;
+    
+  }
+  >a {
+
+    &:after {
+      // display:none!important;
+    }
+  }
+} 

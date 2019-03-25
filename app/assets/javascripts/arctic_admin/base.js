@@ -3,6 +3,23 @@
 //= require active_admin/base
 
 $(function() {
+   // Addings to menu items
+
+  var loc = window.location.pathname;
+  var tabs = $('.header-item.tabs#tabs');
+  var currentLink = tabs.find('li a[href*="'+ loc +'"]');
+  var hasNested = tabs.find('.has_nested');
+  if(currentLink.length){
+    currentLink.addClass('active')
+    currentLink.closest('li > a').addClass('active')
+    currentLink.closest('.has_nested').addClass('open')
+  }
+  
+  tabs.find('.has_nested > a').after('<div class="open-trigger"></div>')
+  hasNested.on('click','.open-trigger',function(){
+    $(this).closest('.has_nested').toggleClass('open')
+  })
+
   $(document).on('click touchstart', '#sidebar', function(e) {
     var position = $(this).position();
     var width = $(this).width();
